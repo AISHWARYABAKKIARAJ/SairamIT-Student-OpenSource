@@ -1,11 +1,14 @@
-# Task: Improve this slow algorithm to find the nth Fibonacci number.
-def fibonacci(n):
-    if n <= 1:
-        return n
-    return fibonacci(n - 1) + fibonacci(n - 2)
+def generate_fibonacci(n):
+    if n <= 0:
+        return []  # No Fibonacci numbers for non-positive input
+    if n == 1:
+        return [0]  # Only the first Fibonacci number
+    # Initializing the list with the first two Fibonacci numbers
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])  # Adding the next number
+    return fib_sequence
 
-# Current implementation is very slow for large n.
-# Contributors: Optimize this code to use a more efficient approach like memoization or iteration.
+n = 10  # Testing with any number of terms
+print(f"First {n} Fibonacci numbers:", generate_fibonacci(n))
 
-n = 35  # Test with a large number
-print(f"Fibonacci({n}) =", fibonacci(n))
